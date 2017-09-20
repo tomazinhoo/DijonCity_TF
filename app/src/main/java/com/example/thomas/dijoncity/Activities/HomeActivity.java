@@ -22,7 +22,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,15 +48,18 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(getBaseContext(), DetailsActivity.class);
-                intent.putExtra("id", "0123");
+                String id = ((Poi)adapterView.getAdapter().getItem(i)).getId();
+                intent.putExtra("id", id);
 
                 startActivity(intent);
             }
         });
 
-        pois = new ArrayList<Poi>();
+        pois = new ArrayList<>();
         getPoisAsync();
     }
+
+    //region GetPoisAsync
 
     private void getPoisAsync() {
         new AsyncTask<Void, Void, Void>() {
@@ -110,4 +112,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         }.execute();
     }
+
+    //endregion
 }
