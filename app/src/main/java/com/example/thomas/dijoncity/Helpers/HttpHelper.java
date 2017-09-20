@@ -1,4 +1,4 @@
-package com.example.thomas.dijoncity.Services;
+package com.example.thomas.dijoncity.Helpers;
 
 import android.util.Log;
 
@@ -16,11 +16,11 @@ import java.net.URL;
  * Created by Thomas on 08/09/2017.
  */
 
-public class HttpHandler {
+public class HttpHelper {
 
-    private static final String TAG = HttpHandler.class.getSimpleName();
+    private static final String TAG = HttpHelper.class.getSimpleName();
 
-    public HttpHandler() { }
+    public HttpHelper() { }
 
     public String makeServiceCall(String reqUrl) {
         String response = null;

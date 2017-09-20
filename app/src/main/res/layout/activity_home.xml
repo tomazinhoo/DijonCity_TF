@@ -7,10 +7,24 @@
     tools:context="com.example.thomas.dijoncity.Activities.HomeActivity"
     android:padding="10dp" >
 
+    <Button
+        android:id="@+id/buttonMyTrips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mes parcours" />
+
+    <Button
+        android:id="@+id/buttonMap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonMyTrips"
+        android:text="Afficher la carte" />
+
     <TextView
         android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonMap" />
 
     <ListView
         android:id="@+id/listViewPois"

@@ -1,5 +1,7 @@
 package com.example.thomas.dijoncity.Activities;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,11 +13,12 @@ import com.example.thomas.dijoncity.Models.Location;
 import com.example.thomas.dijoncity.Models.Poi;
 import com.example.thomas.dijoncity.Models.Position;
 import com.example.thomas.dijoncity.R;
-import com.example.thomas.dijoncity.Services.HttpHandler;
+import com.example.thomas.dijoncity.Helpers.HttpHelper;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -27,7 +30,7 @@ public class DetailsActivity extends AppCompatActivity {
     private String TAG = DetailsActivity.class.getSimpleName();
     private static String url = "https://my-json-server.typicode.com/lpotherat/pois/pois/";
 
-    private TextView textViewType, textViewName, textViewAddress, textViewCity;
+    private TextView textViewName, textViewAddress, textViewCity;
     private SupportMapFragment mapFragment;
 
     private Poi poi;
@@ -40,7 +43,6 @@ public class DetailsActivity extends AppCompatActivity {
 
         idPoi = getIntent().getStringExtra("id");
 
-        textViewType = (TextView) findViewById(R.id.textViewType);
         textViewName = (TextView) findViewById(R.id.textViewName);
         textViewAddress = (TextView) findViewById(R.id.textViewAddress);
         textViewCity = (TextView) findViewById(R.id.textViewCity);
@@ -52,12 +54,18 @@ public class DetailsActivity extends AppCompatActivity {
 
     //region GetPoiAsync
 
+    private Bitmap resizeMapIcons(String iconName, int width, int height){
+        Bitmap imageBitmap = BitmapFactory.decodeResource(getResources(),getResources().getIdentifier(iconName, "drawable", getPackageName()));
+        Bitmap resizedBitmap = Bitmap.createScaledBitmap(imageBitmap, width, height, false);
+        return resizedBitmap;
+    }
+
     private void getPoiAsync() {
         new AsyncTask<Void, Void, Void>() {
 
             @Override
             protected Void doInBackground(Void... voids) {
-                HttpHandler sh = new HttpHandler();
+                HttpHelper sh = new HttpHelper();
                 String jsonString = sh.makeServiceCall(url + idPoi);
 
                 if (jsonString != null) {
@@ -94,7 +102,6 @@ public class DetailsActivity extends AppCompatActivity {
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
 
-                textViewType.setText(poi.getType());
                 textViewName.setText(poi.getName());
                 textViewAddress.setText(poi.getLocation().getAdress());
                 textViewCity.setText(poi.getLocation().getPostalCode() + " " + poi.getLocation().getCity());
@@ -104,9 +111,17 @@ public class DetailsActivity extends AppCompatActivity {
                     public void onMapReady(GoogleMap googleMap) {
 
                         LatLng latLng = new LatLng(poi.getLocation().getPosition().getLat(), poi.getLocation().getPosition().getLon());
+                        MarkerOptions marker = new MarkerOptions().title(poi.getName()).position(latLng);
+
+                        // Change l'icone du marker
+                        if (poi.getType().equals("REST")) {
+                            marker.icon(BitmapDescriptorFactory.fromBitmap(resizeMapIcons("rest", 110, 110)));
+                        } else {
+                            marker.icon(BitmapDescriptorFactory.fromBitmap(resizeMapIcons("cine", 120, 120)));
+                        }
 
                         // Ajoute le marker sur la map
-                        googleMap.addMarker(new MarkerOptions().title(poi.getLocation().getCity()).position(latLng));
+                        googleMap.addMarker(marker);
 
                         // Centre la map sur la ville (avec animation de zoom)
                         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
