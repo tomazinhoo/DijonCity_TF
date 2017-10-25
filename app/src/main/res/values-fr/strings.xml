@@ -1,11 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Dijon City</string>
+    <string name="app_name">Dijon Ville</string>
     <string name="my_trips">Mes parcours</string>
     <string name="show_map">Ouvrir la carte</string>
     <string name="title_list_poi">Liste des points d\'intérêt de Dijon</string>
     <string name="label_cinema">Cinéma</string>
-    <string name="label_restaurant">Restaurant</string>
     <string name="label_date">Date</string>
+    <string name="label_restaurant">Restaurant</string>
     <string name="label_status">Statut</string>
     <string name="label_comment">Commentaire</string>
 </resources>

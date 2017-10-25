@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dijon City</string>
+    <string name="my_trips">My trips</string>
+    <string name="show_map">Open the map</string>
+    <string name="title_list_poi">List of points of interest in Dijon</string>
+    <string name="label_cinema">Cinema</string>
+    <string name="label_date">Date</string>
+    <string name="label_restaurant">Restaurant</string>
+    <string name="label_status">Status</string>
+    <string name="label_comment">Comment</string>
+</resources>

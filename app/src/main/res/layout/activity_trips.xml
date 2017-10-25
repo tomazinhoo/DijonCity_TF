@@ -11,7 +11,7 @@
         android:id="@+id/textViewCinema"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cinéma" />
+        android:text="@string/label_cinema" />
 
     <Spinner
         android:id="@+id/spinnerCinema"
@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/spinnerCinema"
-        android:text="Restaurant" />
+        android:text="@string/label_restaurant" />
 
     <Spinner
         android:id="@+id/spinnerRestaurant"
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/spinnerRestaurant"
-        android:text="Date" />
+        android:text="@string/label_date" />
 
     <EditText
         android:id="@+id/editTextPredictedDate"
@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editTextPredictedDate"
-        android:text="Commentaires" />
+        android:text="@string/label_comment" />
 
     <EditText
         android:id="@+id/editTextComment"
@@ -63,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editTextComment"
-        android:text="Statut" />
+        android:text="@string/label_status" />
 
     <Spinner
         android:id="@+id/spinnerStatus"

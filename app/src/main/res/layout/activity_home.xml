@@ -11,24 +11,32 @@
         android:id="@+id/buttonMyTrips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mes parcours" />
+        android:text="@string/my_trips" />
 
     <Button
         android:id="@+id/buttonMap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/buttonMyTrips"
-        android:text="Afficher la carte" />
+        android:text="@string/show_map" />
 
     <TextView
         android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonMap" />
+        android:layout_below="@+id/buttonMap"
+        android:text="@string/title_list_poi" />
+
+    <TextView
+        android:id="@+id/textViewNbPois"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewTitle"
+        android:text="50" />
 
     <ListView
         android:id="@+id/listViewPois"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewTitle" />
+        android:layout_below="@+id/textViewNbPois" />
 </RelativeLayout>

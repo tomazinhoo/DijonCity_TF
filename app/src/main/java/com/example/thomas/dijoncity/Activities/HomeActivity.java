@@ -1,7 +1,11 @@
 package com.example.thomas.dijoncity.Activities;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,18 +26,21 @@ import com.example.thomas.dijoncity.Helpers.HttpHelper;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
+    private final int MY_PERMISSIONS_REQUEST_READ_SMS = 0;
+
     private String TAG = HomeActivity.class.getSimpleName();
     private static String url = "https://my-json-server.typicode.com/lpotherat/pois/pois";
 
-    private TextView textViewTitle;
     private ListView listViewPois;
     private Button buttonMyTrips, buttonMap;
+    private TextView textViewNbPois;
 
     private List<Poi> pois;
 
@@ -41,6 +48,32 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        if (ContextCompat.checkSelfPermission(HomeActivity.this,
+                Manifest.permission.READ_SMS)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(HomeActivity.this,
+                    Manifest.permission.READ_SMS)) {
+
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+
+            } else {
+
+                // No explanation needed, we can request the permission.
+
+                ActivityCompat.requestPermissions(HomeActivity.this,
+                        new String[]{Manifest.permission.READ_SMS},
+                        MY_PERMISSIONS_REQUEST_READ_SMS);
+
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        }
 
         buttonMyTrips = (Button) findViewById(R.id.buttonMyTrips);
         buttonMyTrips.setOnClickListener(new View.OnClickListener() {
@@ -60,9 +93,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        textViewTitle = (TextView) findViewById(R.id.textViewTitle);
-        textViewTitle.setText("Liste des points d'intérêts de Dijon");
-
         listViewPois = (ListView) findViewById(R.id.listViewPois);
         listViewPois.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -77,6 +107,30 @@ public class HomeActivity extends AppCompatActivity {
 
         pois = new ArrayList<>();
         getPoisAsync();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_READ_SMS: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+
+                } else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
     }
 
     //region GetPoisAsync
@@ -129,6 +183,9 @@ public class HomeActivity extends AppCompatActivity {
 
                 PoiAdapter poiAdapter = new PoiAdapter(HomeActivity.this, pois);
                 listViewPois.setAdapter(poiAdapter);
+
+                textViewNbPois = (TextView) findViewById(R.id.textViewNbPois);
+                textViewNbPois.setText(String.valueOf(pois.size()));
             }
         }.execute();
     }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dijon City</string>
+    <string name="label_cinema">Revolucion</string>
+    <string name="label_comment">Revolucion</string>
+    <string name="label_date">Revolucion</string>
+    <string name="label_restaurant">Revolucion</string>
+    <string name="label_status">Revolucion</string>
+    <string name="my_trips">Revolucion</string>
+    <string name="show_map">Revolucion</string>
+    <string name="title_list_poi">Revolucion</string>
+</resources>
