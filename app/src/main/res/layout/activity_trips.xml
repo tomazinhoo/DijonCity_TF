@@ -7,68 +7,15 @@
     tools:context="com.example.thomas.dijoncity.Activities.TripsActivity"
     android:padding="10dp">
 
-    <TextView
-        android:id="@+id/textViewCinema"
+    <Button
+        android:id="@+id/buttonAddTrip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/label_cinema" />
+        android:text="Ajouter un parcours" />
 
-    <Spinner
-        android:id="@+id/spinnerCinema"
+    <ListView
+        android:id="@+id/listViewTrips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewCinema" />
-
-    <TextView
-        android:id="@+id/textViewRestaurant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/spinnerCinema"
-        android:text="@string/label_restaurant" />
-
-    <Spinner
-        android:id="@+id/spinnerRestaurant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewRestaurant" />
-
-    <TextView
-        android:id="@+id/textViewPredictedDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/spinnerRestaurant"
-        android:text="@string/label_date" />
-
-    <EditText
-        android:id="@+id/editTextPredictedDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewPredictedDate" />
-
-    <TextView
-        android:id="@+id/textViewComment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextPredictedDate"
-        android:text="@string/label_comment" />
-
-    <EditText
-        android:id="@+id/editTextComment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewComment" />
-
-    <TextView
-        android:id="@+id/textViewStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextComment"
-        android:text="@string/label_status" />
-
-    <Spinner
-        android:id="@+id/spinnerStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewStatus" />
-
+        android:layout_below="@+id/buttonAddTrip" />
 </RelativeLayout>

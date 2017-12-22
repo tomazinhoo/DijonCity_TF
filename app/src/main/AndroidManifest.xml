@@ -30,22 +30,22 @@
         </activity>
         <activity android:name=".Activities.DetailsActivity" />
         <activity android:name=".Activities.TripsActivity" />
+        <activity android:name=".Activities.AddTripActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyABmcTiSLHDta5fvvl_22F373Bc1r17LKo" />
 
-        <activity android:name=".Activities.MapActivity"></activity>
+        <activity android:name=".Activities.MapActivity" />
 
         <receiver android:name=".Reveivers.BatteryReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.BATTERY_LOW"/>
+                <action android:name="android.intent.action.BATTERY_LOW" />
             </intent-filter>
         </receiver>
-
         <receiver android:name=".Reveivers.SMSReceiver">
             <intent-filter>
-                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
     </application>

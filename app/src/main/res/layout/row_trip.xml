@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/textStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="20dp"
+        tools:text="A venir" />
+
+    <ImageView
+        android:id="@+id/imageCinema"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/textStatus"
+        tools:background="#000"/>
+
+    <TextView
+        android:id="@+id/textCinema"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_toRightOf="@+id/imageCinema"
+        android:layout_alignTop="@+id/imageCinema"
+        android:textColor="@android:color/black"
+        tools:text="Cinéma Olympia" />
+
+    <ImageView
+        android:id="@+id/imageRestaurant"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="7dp"
+        android:layout_below="@+id/imageCinema"
+        tools:background="#000"/>
+
+    <TextView
+        android:id="@+id/textRestaurant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_toRightOf="@+id/imageRestaurant"
+        android:layout_alignTop="@+id/imageRestaurant"
+        android:textColor="@android:color/black"
+        tools:text="Marco Polo" />
+</RelativeLayout>

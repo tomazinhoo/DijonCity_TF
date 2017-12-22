@@ -1,8 +1,11 @@
 package com.example.thomas.dijoncity.Activities;
 
 import android.Manifest;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -18,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.thomas.dijoncity.Adapters.PoiAdapter;
 import com.example.thomas.dijoncity.Models.Location;
+import com.example.thomas.dijoncity.Models.Person;
 import com.example.thomas.dijoncity.Models.Poi;
 import com.example.thomas.dijoncity.Models.Position;
 import com.example.thomas.dijoncity.R;
@@ -29,6 +33,7 @@ import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
@@ -107,6 +112,12 @@ public class HomeActivity extends AppCompatActivity {
 
         pois = new ArrayList<>();
         getPoisAsync();
+
+        ContentResolver resolver = getContentResolver();
+        Cursor cursor = resolver.query(Uri.parse("content://fr.diiage.FernandesMyHealth/person/tomazinho"), null, null, null, null);
+        cursor.moveToFirst();
+        Person person = Person.cursorToPerson(cursor);
+        cursor.close();
     }
 
     @Override

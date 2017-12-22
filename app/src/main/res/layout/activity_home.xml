@@ -7,10 +7,23 @@
     tools:context="com.example.thomas.dijoncity.Activities.HomeActivity"
     android:padding="10dp" >
 
+    <EditText
+        android:id="@+id/textLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/buttonConnection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textLogin"
+        android:text="Se connecter" />
+
     <Button
         android:id="@+id/buttonMyTrips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonConnection"
         android:text="@string/my_trips" />
 
     <Button

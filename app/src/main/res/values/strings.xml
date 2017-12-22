@@ -8,4 +8,5 @@
     <string name="label_date">Date</string>
     <string name="label_status">Statut</string>
     <string name="label_comment">Commentaire</string>
+    <string name="save">Enregistrer</string>
 </resources>

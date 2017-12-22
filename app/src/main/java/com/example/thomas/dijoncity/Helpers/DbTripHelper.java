@@ -2,9 +2,18 @@ package com.example.thomas.dijoncity.Helpers;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.TextView;
 
 import com.example.thomas.dijoncity.Models.Trip;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Thomas on 20/09/2017.
@@ -53,5 +62,39 @@ public class DbTripHelper {
         values.put(COL_STATUS, trip.getStatus());
 
         return db.insert(TABLE_TRIP, null, values);
+    }
+
+    public List<Trip> getAllTrips() {
+        List<Trip> trips = new ArrayList<>();
+
+        Cursor cursor = db.rawQuery("select * from " + TABLE_TRIP, null);
+
+        while (cursor.moveToNext()) {
+            Trip trip = cursorToTrip(cursor);
+            trips.add(trip);
+        }
+
+        cursor.close();
+
+        return trips;
+    }
+
+    public Trip cursorToTrip(Cursor c) {
+        if (c.getCount() == 0)
+            return null;
+
+        Date creationDate = new Date(c.getLong(NUM_COL_CREATION_DATE));
+        Date predictedDate = new Date(c.getLong(NUM_COL_PREDICTED_DATE));
+
+        Trip trip = new Trip();
+        trip.setId(c.getInt(NUM_COL_ID));
+        trip.setCinemaId(c.getString(NUM_COL_CINEMA_ID));
+        trip.setRestaurantId(c.getString(NUM_COL_RESTAURANT_ID));
+        trip.setCreationDate(creationDate);
+        trip.setPredictedDate(predictedDate);
+        trip.setComment(c.getString(NUM_COL_COMMENT));
+        trip.setStatus(c.getString(NUM_COL_STATUS));
+
+        return trip;
     }
 }
