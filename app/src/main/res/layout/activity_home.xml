@@ -1,55 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.thomas.dijoncity.Activities.HomeActivity"
-    android:padding="10dp" >
+    tools:context="com.example.thomas.dijoncity.Activities.HomeActivity">
 
-    <EditText
-        android:id="@+id/textLogin"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/buttonConnection"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textLogin"
-        android:text="Se connecter" />
+        android:padding="10dp"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true">
 
-    <Button
-        android:id="@+id/buttonMyTrips"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonConnection"
-        android:text="@string/my_trips" />
+        <Button
+            android:id="@+id/buttonMyTrips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_trips" />
 
-    <Button
-        android:id="@+id/buttonMap"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonMyTrips"
-        android:text="@string/show_map" />
+        <Button
+            android:id="@+id/buttonMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonMyTrips"
+            android:text="@string/show_map" />
 
-    <TextView
-        android:id="@+id/textViewTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonMap"
-        android:text="@string/title_list_poi" />
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonMap"
+            android:text="@string/title_list_poi" />
 
-    <TextView
-        android:id="@+id/textViewNbPois"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewTitle"
-        android:text="50" />
+        <TextView
+            android:id="@+id/textViewNbPois"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewTitle"
+            android:text="50" />
 
-    <ListView
-        android:id="@+id/listViewPois"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewNbPois" />
-</RelativeLayout>
+        <EditText
+            android:id="@+id/textLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewNbPois" />
+
+        <Button
+            android:id="@+id/buttonConnection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textLogin"
+            android:text="Se connecter" />
+
+        <ListView
+            android:id="@+id/listViewPois"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonConnection" />
+
+    </RelativeLayout>
+</ScrollView>

@@ -7,15 +7,117 @@
     tools:context="com.example.thomas.dijoncity.Activities.TripsActivity"
     android:padding="10dp">
 
-    <Button
-        android:id="@+id/buttonAddTrip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ajouter un parcours" />
+        <TextView
+            android:id="@+id/textViewMyTrips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mes parcours"
+            android:textSize="20dp" />
 
-    <ListView
-        android:id="@+id/listViewTrips"
+        <ListView
+            android:id="@+id/listViewTrips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewMyTrips" />
+
+        <View
+            android:id="@+id/hr"
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:background="#000000"
+            android:layout_below="@+id/listViewTrips"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp" />
+
+    <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonAddTrip" />
+        android:layout_below="@+id/hr">
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textViewAddTrip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ajouter un parcours"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textViewCinemas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_cinema"
+                android:layout_below="@+id/textViewAddTrip" />
+
+            <Spinner
+                android:id="@+id/spinnerCinemas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewCinemas" />
+
+            <TextView
+                android:id="@+id/textViewRestaurants"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spinnerCinemas"
+                android:text="@string/label_restaurant" />
+
+            <Spinner
+                android:id="@+id/spinnerRestaurants"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewRestaurants" />
+
+            <TextView
+                android:id="@+id/textViewPredictedDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spinnerRestaurants"
+                android:text="@string/label_date" />
+
+            <DatePicker
+                android:id="@+id/datePickerPredictedDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:datePickerMode="spinner"
+                android:calendarViewShown="false"
+                android:layout_below="@+id/textViewPredictedDate" />
+
+            <TextView
+                android:id="@+id/textViewComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/datePickerPredictedDate"
+                android:text="@string/label_comment" />
+
+            <EditText
+                android:id="@+id/editTextComment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewComment" />
+
+            <TextView
+                android:id="@+id/textViewStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextComment"
+                android:text="@string/label_status" />
+
+            <Spinner
+                android:id="@+id/spinnerStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewStatus" />
+
+            <Button
+                android:id="@+id/buttonSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spinnerStatus"
+                android:text="@string/save" />
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>
